@@ -30,6 +30,9 @@ public class TarefaBean{
 	private String tituloTextoEditar;
 	private String numeroTextoEditar;
 	private String situacaoTextoEditar;
+	private String detalhesTextoEditar;
+	private String deadlineTextoEditar;
+	private String PrioridadeTextoEditar;
 	
     public String salvarTarefa() {
     	dao.salvarResponsavel(responsavel);
@@ -47,7 +50,19 @@ public class TarefaBean{
     	this.numeroTextoEditar =  editar.getNumero();
     	this.tituloTextoEditar  = editar.getTitulo();
     	this.situacaoTextoEditar = editar.getSituacao();
+    	this.deadlineTextoEditar = editar.getDeadline();
+    	this.detalhesTextoEditar = editar.getDetalhes();
 		return "editar";
+    }
+    public String detalhesTarefa(Tarefa detalhes) {
+    	System.out.println("Tarefa recebida: " + detalhes.getTitulo());
+    	this.tarefa = detalhes;
+    	this.responsavel = detalhes.getResponsavel();
+    	this.responsavelTextoEditar = detalhes.getResponsavel().getNome();
+    	this.tituloTextoEditar  = detalhes.getTitulo();
+    	this.deadlineTextoEditar = detalhes.getDeadline();
+    	this.detalhesTextoEditar = detalhes.getDetalhes();
+		return "detalhes";
     }
     public String salvarTarefaAtualizada() {
     	dao.editarAtualizarTarefa(tarefa);
@@ -57,6 +72,8 @@ public class TarefaBean{
     }
     
     public String excluirTarefa(Tarefa excluir){
+    	dao.excluirTarefa(excluir);
+    	buscarTarefas();
 		return "";
     }
     
@@ -116,7 +133,18 @@ public class TarefaBean{
 		this.tarefaservice = tarefaservice;
 	}
 
-
+	public String getDetalhesTextoEditar() {
+		return detalhesTextoEditar;
+	}
+	public void setDetalhesTextoEditar(String detalhesTextoEditar) {
+		this.detalhesTextoEditar = detalhesTextoEditar;
+	}
+	public String getDeadlineTextoEditar() {
+		return deadlineTextoEditar;
+	}
+	public void setDeadlineTextoEditar(String deadlineTextoEditar) {
+		this.deadlineTextoEditar = deadlineTextoEditar;
+	}
 	public void setResponsavel(Responsavel responsavel) {
 		this.responsavel = responsavel;
 	}
@@ -143,6 +171,12 @@ public class TarefaBean{
 	}
 	public void setSituacaoTextoEditar(String situacaoTextoEditar) {
 		this.situacaoTextoEditar = situacaoTextoEditar;
+	}
+	public String getPrioridadeTextoEditar() {
+		return PrioridadeTextoEditar;
+	}
+	public void setPrioridadeTextoEditar(String prioridadeTextoEditar) {
+		PrioridadeTextoEditar = prioridadeTextoEditar;
 	}
 	
     

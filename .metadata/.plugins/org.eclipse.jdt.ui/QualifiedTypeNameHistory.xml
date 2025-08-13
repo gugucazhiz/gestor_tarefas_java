@@ -6,4 +6,14 @@
     <fullyQualifiedTypeName name="org.hibernate.validator.constraints.NotEmpty"/>
     <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="org.hibernate.hql.internal.ast.tree.TableReferenceNode"/>
+    <fullyQualifiedTypeName name="org.hibernate.service.spi.InjectService"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
+    <fullyQualifiedTypeName name="javax.persistence.Persistence"/>
+    <fullyQualifiedTypeName name="javax.faces.bean.ManagedProperty"/>
+    <fullyQualifiedTypeName name="javax.faces.bean.ManagedBean"/>
+    <fullyQualifiedTypeName name="javax.faces.bean.ViewScoped"/>
+    <fullyQualifiedTypeName name="ptest.Responsavel"/>
+    <fullyQualifiedTypeName name="javax.faces.component.html.HtmlInputTextarea"/>
+    <fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
 </qualifiedTypeNameHistroy>

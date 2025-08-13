@@ -51,8 +51,8 @@
             	margin-bottom: 5px;
            		font-weight: bold;
 	  		}
-	  		.lado-oposto{
-	  			
+	  		.input-label-area{
+	  			resize:vertical;
 	  		}
 	  </style>
 </h:head>
@@ -91,6 +91,18 @@
         	</div>
         	
         	<div class="input-o">
+	        	 <div class="input-t"> 
+	        		<h:outputText id="deadline" value="Deadline" styleClass="input-label"></h:outputText>  		
+	        		<h:inputText value="#{tarefaBean.tarefa.deadline}"/>
+	        	</div>
+	        	 
+	        	 <div class="input-t"> 
+	        		<h:outputText id="detalhe" value="Detalhe" styleClass="input-label"></h:outputText>  		
+	        		<h:inputTextarea styleClass="input-label-area" value="#{tarefaBean.tarefa.detalhes}"/>
+	        	</div>
+        	 </div>	
+        	
+        	<div class="input-o">
         		<h:outputText id="situacao" value ="Situacao" styleClass="input-label"></h:outputText>
         		<h:selectOneMenu value="#{tarefaBean.tarefa.situacao}" style="margin-bottom:5px">
                             <f:selectItem itemLabel=" " itemValue=""/>
@@ -101,8 +113,19 @@
                 <br/>
         	</div>
         	
-        		<h:commandButton style="margin-bottom:10px" 
-        		value="Registrar" action="#{tarefaBean.salvarTarefaAtualizada}"></h:commandButton>
+        	<div class="input-o">
+        		<h:outputText id="prioridade" value ="Prioridade" styleClass="input-label"></h:outputText>
+        		<h:selectOneMenu value="#{tarefaBean.tarefa.prioridade}" style="margin-bottom:5px">
+                            <f:selectItem itemLabel="Indefinida" itemValue=""/>
+                            <f:selectItem itemLabel="Alta" itemValue="ALTA"/>
+                            <f:selectItem itemLabel="Media" itemValue="MEDIA"/>
+                            <f:selectItem itemLabel="Baixa" itemValue="BAIXA"/>
+                </h:selectOneMenu>
+                <h:message for="prioridade" style="color:red"/>
+                <br/>
+        	</div>
+        	
+        		<h:commandButton style="margin-bottom:10px" value="Registrar" action="#{tarefaBean.salvarTarefaAtualizada}"></h:commandButton>
         		<br/>
         		<h:button value="Voltar" outcome="index"></h:button>
         		</h:form>
@@ -117,6 +140,10 @@
         		<h:outputText value="#{tarefaBean.numeroTextoEditar}" id="numero"
         		styleClass="input-label"></h:outputText>
         		<h:outputText value="#{tarefaBean.situacaoTextoEditar}" id="situacao"
+        		styleClass="input-label"></h:outputText>
+        		<h:outputText value="#{tarefaBean.deadlineTextoEditar}" id="deadline"
+        		styleClass="input-label"></h:outputText>
+        		<h:outputText value="#{tarefaBean.detalhesTextoEditar}" id="detalhes"
         		styleClass="input-label"></h:outputText>
         	</div>
         	</h:form>

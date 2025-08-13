@@ -10,13 +10,23 @@ public class Tarefa implements Serializable{
 	
     @Id @GeneratedValue
     private Long id;
+    private Long Numero_auto;
     private String numero;
     private String titulo;
 @ManyToOne
     private Responsavel responsavel = new Responsavel();
     private String situacao;
+    private String deadline;
+    private String Detalhes;
+    private String prioridade;
     
     
+    @PostLoad
+    public void calcularNumeroAuto() {
+    	if (id != null) {
+    		Numero_auto = id/2;
+    	}
+    }
 	public Long getId() {
 		return id;
 	}
@@ -47,6 +57,30 @@ public class Tarefa implements Serializable{
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
+	public String getDeadline() {
+		return deadline;
+	}
+	public void setDeadline(String deadline) {
+		this.deadline = deadline;
+	}
+	public String getDetalhes() {
+		return Detalhes;
+	}
+	public void setDetalhes(String detalhes) {
+		Detalhes = detalhes;
+	}
+	public String getPrioridade() {
+		return prioridade;
+	}
+	public void setPrioridade(String prioridade) {
+		this.prioridade = prioridade;
+	}
+	public Long getNumero_auto() {
+		return Numero_auto;
+	}
+	public void setNumero_auto(Long numero_auto) {
+		Numero_auto = numero_auto;
+	}
     
-   
+	
 }

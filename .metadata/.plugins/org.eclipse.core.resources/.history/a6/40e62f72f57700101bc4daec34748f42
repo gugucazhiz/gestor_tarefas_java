@@ -1,0 +1,47 @@
+package ptest;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+import javax.persistence.*;
+import java.util.List;
+@SessionScoped
+@ManagedBean(name="tarefaDAO")
+public class TarefaDAO {
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("ptest");
+
+      
+    public void salvarTarefa(Tarefa filtro){
+    	EntityManager em = emf.createEntityManager();
+    	em.getTransaction().begin();
+    	em.persist(filtro);
+    	em.getTransaction().commit();
+    	em.close();
+    	System.out.print("salvo Com sucesso");
+    }
+    
+    public void salvarResponsavel(Responsavel responsavel) {
+    	EntityManager em = emf.createEntityManager();
+    	em.getTransaction().begin();
+    	em.persist(responsavel);
+    	em.getTransaction().commit();
+    	em.close();
+    }
+    
+    public void editarAtualizarTarefa(Tarefa tarefa){
+    	EntityManager em = emf.createEntityManager();
+    	em.getTransaction().begin();
+    	em.merge(tarefa);
+    	em.getTransaction().commit();;
+    	em.close();
+    	System.out.print("tarefa atualizada");
+    }
+ 
+
+    public List<Tarefa> listar() {
+        EntityManager em = emf.createEntityManager();
+        List<Tarefa> lista = em.createQuery("FROM Tarefa", Tarefa.class).getResultList();
+        em.close();
+        return lista;
+    }
+}

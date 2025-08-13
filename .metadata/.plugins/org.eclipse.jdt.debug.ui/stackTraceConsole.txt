@@ -1,0 +1,4 @@
+System.out.println("Filtro - Número: " + filtro.getNumero());
+System.out.println("Filtro - Título: " + filtro.getTitulo());
+System.out.println("Filtro - Responsável: " + (filtro.getResponsavel() != null ? filtro.getResponsavel().getNome() : "null"));
+System.out.println("Filtro - Situação: " + filtro.getSituacao());

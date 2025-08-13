@@ -52,6 +52,11 @@ public class TarefaService {
             jpql.append(" AND t.situacao = :situacao");
             parametros.put("situacao", filtro.getSituacao().trim());
         }
+        
+        if(filtro.getPrioridade() != null && !filtro.getPrioridade().trim().isEmpty()) {
+        	jpql.append(" AND t.prioridade = :prioridade");
+        	parametros.put("prioridade", filtro.getPrioridade().trim());
+        }
 
         TypedQuery<Tarefa> query = em.createQuery(jpql.toString(), Tarefa.class);
         parametros.forEach(query::setParameter); // Aplica os parâmetros

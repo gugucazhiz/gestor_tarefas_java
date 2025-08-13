@@ -31,7 +31,18 @@
             	margin-bottom: 5px;
            		font-weight: bold;
 	  		}
-	  		
+	  		.input-label-area{
+	  			display: block;
+            	margin-bottom: 5px;
+           		font-weight: bold;
+           		resize:vertical;
+	  		}
+	  		.input-t-reverse{
+	  			margin-left: 220px
+	  		}
+	  		.input-o-reverse{
+	  			display:flex
+	  		}
 	  </style>
 </h:head>
 
@@ -48,7 +59,17 @@
         		</div>
         		
         	 </div>
-        	 
+	         <div class="input-o-reverse">
+	        	 <div class="input-t"> 
+	        		<h:outputText id="deadline" value="Deadline" styleClass="input-label"></h:outputText>  		
+	        		<h:inputText value="#{tarefaBean.tarefa.deadline}"/>
+	        	</div>
+	        	 
+	        	 <div class="input-t-reverse"> 
+	        		<h:outputText id="detalhe" value="Detalhe" styleClass="input-label"></h:outputText>  		
+	        		<h:inputTextarea styleClass="input-label-area" value="#{tarefaBean.tarefa.detalhes}"/>
+	        	</div>
+        	 </div>	
         	 <div class="input-o">
         		<h:outputText id="titulo" value="Titulo" styleClass="input-label"></h:outputText>
         		<div class="input-t">
@@ -75,6 +96,18 @@
                             <f:selectItem itemLabel="Concluído(a)" itemValue="CONCLUIDA"/>
                 </h:selectOneMenu>
                 <h:message for="situacao" style="color:red"/>
+                <br/>
+        	</div>
+        	
+        	<div class="input-o">
+        		<h:outputText id="prioridade" value ="Prioridade" styleClass="input-label"></h:outputText>
+        		<h:selectOneMenu value="#{tarefaBean.tarefa.prioridade}" style="margin-bottom:5px">
+                            <f:selectItem itemLabel="Indefinida" itemValue=""/>
+                            <f:selectItem itemLabel="Alta" itemValue="ALTA"/>
+                            <f:selectItem itemLabel="Media" itemValue="MEDIA"/>
+                            <f:selectItem itemLabel="Baixa" itemValue="BAIXA"/>
+                </h:selectOneMenu>
+                <h:message for="prioridade" style="color:red"/>
                 <br/>
         	</div>
         	

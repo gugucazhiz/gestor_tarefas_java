@@ -2,7 +2,6 @@ package ptest;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.persistence.*;
 import java.util.List;
 @SessionScoped
@@ -14,16 +13,26 @@ public class TarefaDAO {
     public void salvarTarefa(Tarefa filtro){
     	EntityManager em = emf.createEntityManager();
     	em.getTransaction().begin();
-    	em.persist(filtro);
+    	if(filtro.getId()==null) {
+    		em.persist(filtro);
+    	}
+    	else {
+    		em.merge(filtro);
+    	}
     	em.getTransaction().commit();
     	em.close();
-    	System.out.print("salvo Com sucesso");
+    	System.out.println("salvo Com sucesso");
     }
     
     public void salvarResponsavel(Responsavel responsavel) {
     	EntityManager em = emf.createEntityManager();
     	em.getTransaction().begin();
-    	em.persist(responsavel);
+    	if(responsavel.getId() ==null) {
+    		em.persist(responsavel);
+    	}
+    	else {
+    		em.merge(responsavel);
+    	}
     	em.getTransaction().commit();
     	em.close();
     }
@@ -31,10 +40,25 @@ public class TarefaDAO {
     public void editarAtualizarTarefa(Tarefa tarefa){
     	EntityManager em = emf.createEntityManager();
     	em.getTransaction().begin();
-    	em.merge(tarefa);
+    	if(tarefa.getId()==null) {
+    		em.persist(tarefa);
+    	}
+    	else {
+    		em.merge(tarefa);
+    	}
     	em.getTransaction().commit();;
     	em.close();
-    	System.out.print("tarefa atualizada");
+    	System.out.println("tarefa atualizada");
+    }
+    public void excluirTarefa(Tarefa tarefa){
+    	EntityManager em = emf.createEntityManager();
+    	em.getTransaction().begin();
+    	
+    	Tarefa tarefaRemovida = em.merge(tarefa);
+    	em.remove(tarefaRemovida);
+    	em.getTransaction().commit();
+    	em.close();
+    	System.out.println("tarefa removida");
     }
  
 

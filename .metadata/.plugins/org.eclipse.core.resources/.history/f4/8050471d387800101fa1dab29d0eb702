@@ -1,0 +1,53 @@
+package ptest;
+
+import java.io.Serializable;
+
+import javax.persistence.*;
+
+@Entity
+public class Tarefa implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
+    @Id @GeneratedValue
+    private Long id;
+    private String numero;
+    private String titulo;
+@ManyToOne
+    private Responsavel responsavel = new Responsavel();
+    private String situacao;
+    private String deadline;
+    
+    
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getNumero() {
+		return numero;
+	}
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	public Responsavel getResponsavel() {
+		return responsavel;
+	}
+	public void setResponsavel(Responsavel responsavel) {
+		this.responsavel = responsavel;
+	}
+	public String getSituacao() {
+		return situacao;
+	}
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
+	}
+    
+   
+}
