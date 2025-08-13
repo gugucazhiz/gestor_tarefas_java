@@ -1,0 +1,32 @@
+package ptest;
+
+import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+@ManagedBean
+@ViewScoped
+public class TarefaBean{
+    private Tarefa tarefa = new Tarefa();
+    private TarefaDAO dao = new TarefaDAO();
+
+    public void salvar() {
+        dao.salvar(tarefa);
+        tarefa = new Tarefa(); // limpa o formulário
+    }
+
+    public List<Tarefa> buscarTarefa(){
+    	return dao.listar();
+    }
+    public List<Tarefa> getPessoas() {
+        return dao.listar();
+    }
+
+    public Tarefa getPessoa() {
+        return tarefa;
+    }
+
+    public void setPessoa(Tarefa tarefa) {
+        this.tarefa = tarefa;
+    }
+}

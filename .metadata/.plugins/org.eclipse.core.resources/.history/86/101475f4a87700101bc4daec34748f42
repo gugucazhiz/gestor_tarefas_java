@@ -1,0 +1,55 @@
+package ptest;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.sun.istack.NotNull;
+
+
+public class FiltroTarefa{
+	@Id @GeneratedValue
+	private Long Id;
+	@NotNull
+    private Integer numero;
+	@NotEmpty(message="Titulo não pode estar vazio")
+    private String titulo;
+	@NotEmpty(message="Situação não pode estar vazio")
+    private String situacao;
+	private String responsavel;
+    
+	public Integer getNumero() {
+		return numero;
+	}
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	public String getSituacao() {
+		return situacao;
+	}
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
+	}
+	public String getResponsavel() {
+		return responsavel;
+	}
+	public void setResponsavel(String responsavel) {
+		this.responsavel = responsavel;
+	}
+	public Long getId() {
+		return Id;
+	}
+	public void setId(Long id) {
+		Id = id;
+	}
+    
+    
+}

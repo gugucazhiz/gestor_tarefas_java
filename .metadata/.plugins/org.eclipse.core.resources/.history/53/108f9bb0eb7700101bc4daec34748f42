@@ -1,0 +1,142 @@
+package ptest;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+
+
+import org.hibernate.hql.internal.ast.tree.TableReferenceNode;
+import org.hibernate.service.spi.InjectService;
+
+
+//meu controlador
+@ManagedBean
+@ViewScoped
+public class TarefaBean{
+	@ManagedProperty("#{tarefaService}")
+	private TarefaService tarefaservice;
+	@ManagedProperty("#{tarefaDAO}")
+    private TarefaDAO dao;
+	
+	private Tarefa tarefa =new Tarefa();
+	
+	private List<Responsavel> responsaveis = new ArrayList<>();
+	private List<Tarefa> tarefas= new ArrayList<>();
+	private Responsavel responsavel = new Responsavel();
+	private String responsavelTextoEditar;
+	private String tituloTextoEditar;
+	private String numeroTextoEditar;
+	private String situacaoTextoEditar;
+	
+    public String salvarTarefa() {
+    	dao.salvarResponsavel(responsavel);
+    	tarefa.setResponsavel(responsavel);
+        dao.salvarTarefa(tarefa);
+        tarefa = new Tarefa(); // limpa o formulário
+    	responsavel = new Responsavel();
+    	return "";
+    }
+    public String editarTarefa(Tarefa editar){
+    	System.out.println("Tarefa recebida: " + editar.getTitulo());
+    	this.tarefa = editar;
+    	this.responsavel = editar.getResponsavel();
+    	responsavelTextoEditar.setValue(editar.getResponsavel());
+    	this.numeroTextoEditar =  editar.getNumero();
+    	this.tituloTextoEditar  = editar.getTitulo();
+    	this.situacaoTextoEditar = editar.getSituacao();
+		return "editar?faces-redirect=true";
+    }
+    
+    public String excluirTarefa(Tarefa excluir){
+		return "";
+    }
+    
+    public String concluirTarefa(Tarefa concluir){
+    	concluir.setSituacao("Concluir");
+		return "";
+    }
+
+    
+    public String buscarTarefas() {
+        tarefas = tarefaservice.filtrar(tarefa); // Chama o serviço de consulta
+        return "";
+    }
+    public List<Tarefa> getTarefas() {
+		return tarefas;
+	}
+
+	public void setTarefas(List<Tarefa> tarefas) {
+		this.tarefas = tarefas;
+	}
+	public Tarefa getTarefa() {
+		return tarefa;
+	}
+	
+	public List<Responsavel> getResponsaveis() {
+		return responsaveis;
+	}
+
+	public void setResponsaveis(List<Responsavel> responsaveis) {
+		this.responsaveis = responsaveis;
+	}
+
+	public void setTarefa(Tarefa tarefa) {
+		this.tarefa = tarefa;
+	}
+
+	public TarefaDAO getDao() {
+		return dao;
+	}
+
+	public void setDao(TarefaDAO dao) {
+		this.dao = dao;
+	}
+
+	public Responsavel getResponsavel() {
+		return responsavel;
+	}
+
+
+	public TarefaService getTarefaservice() {
+		return tarefaservice;
+	}
+
+
+	public void setTarefaservice(TarefaService tarefaservice) {
+		this.tarefaservice = tarefaservice;
+	}
+
+
+	public void setResponsavel(Responsavel responsavel) {
+		this.responsavel = responsavel;
+	}
+	public String getResponsavelTextoEditar() {
+		return responsavelTextoEditar;
+	}
+	public void setResponsavelTextoEditar(String responsavelTextoEditar) {
+		this.responsavelTextoEditar = responsavelTextoEditar;
+	}
+	public String getTituloTextoEditar() {
+		return tituloTextoEditar;
+	}
+	public void setTituloTextoEditar(String tituloTextoEditar) {
+		this.tituloTextoEditar = tituloTextoEditar;
+	}
+	public String getNumeroTextoEditar() {
+		return numeroTextoEditar;
+	}
+	public void setNumeroTextoEditar(String numeroTextoEditar) {
+		this.numeroTextoEditar = numeroTextoEditar;
+	}
+	public String getSituacaoTextoEditar() {
+		return situacaoTextoEditar;
+	}
+	public void setSituacaoTextoEditar(String situacaoTextoEditar) {
+		this.situacaoTextoEditar = situacaoTextoEditar;
+	}
+	
+	
+    
+}

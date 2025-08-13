@@ -1,0 +1,55 @@
+package ptest;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class TarefaService {
+    @PersistenceContext
+    private EntityManager em;
+    public TarefaService() {
+    	EntityManagerFactory emf = Persistence.createEntityManagerFactory("ptest");
+    	em = emf.createEntityManager();
+    }
+    public  List<Tarefa> filtrar(Tarefa filtro) {
+        StringBuilder jpql = new StringBuilder("SELECT t FROM Tarefa t WHERE 1=1");
+        Map<String, Object> parametros = new HashMap<>();
+
+        // Filtro por número
+        if (filtro.getNumero() != null) {
+            jpql.append(" AND t.numero = :numero");
+            parametros.put("numero", filtro.getNumero());
+        }
+
+        // Filtro por título/descrição (busca parcial)
+        //if (filtro.getTitulo() != null && !filtro.getTitulo().isEmpty()) {
+        //    jpql.append(" AND LOWER(t.titulo) LIKE LOWER(:titulo)");
+        //    parametros.put("titulo", "%" + filtro.getTitulo() + "%");
+        //}
+        if(!filtro.getTitulo().isEmpty()) {
+        	jpql.append(" AND t.titulo = :titulo");
+        	parametros.put("titulo", filtro.getTitulo());
+        }
+        // Filtro por responsável
+        if (filtro.getResponsavel() != null && filtro.getResponsavel().getNome() != null && !filtro.getResponsavel().getNome().isEmpty())  {
+            jpql.append(" AND t.responsavel.nome = :responsavel");
+            parametros.put("responsavel", filtro.getResponsavel());
+        }
+
+        // Filtro por situação
+        if (filtro.getSituacao() != null && !filtro.getSituacao().isEmpty()) {
+            jpql.append(" AND t.situacao = :situacao");
+            parametros.put("situacao", filtro.getSituacao());
+        }
+
+        TypedQuery<Tarefa> query = em.createQuery(jpql.toString(), Tarefa.class);
+        parametros.forEach(query::setParameter); // Aplica os parâmetros
+
+        return query.getResultList();
+    }
+}

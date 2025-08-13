@@ -1,0 +1,64 @@
+package ptest;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+@ViewScoped
+@ManagedBean(name="tarefaService")
+public class TarefaService {
+    @PersistenceContext
+    private EntityManager em;
+    public TarefaService() {
+    	EntityManagerFactory emf = Persistence.createEntityManagerFactory("ptest");
+    	em = emf.createEntityManager();
+    }
+    public  List<Tarefa> filtrar(Tarefa filtro) {
+        StringBuilder jpql = new StringBuilder("SELECT t FROM Tarefa t WHERE 1=1");
+        Map<String, Object> parametros = new HashMap<>();
+
+        // Filtro por número
+        if (filtro.getNumero() != null && !filtro.getNumero().trim().isEmpty()) {
+            jpql.append(" AND t.numero = :numero");
+            parametros.put("numero", filtro.getNumero());
+        }
+
+        // Filtro por título/descrição (busca parcial)
+        //if (filtro.getTitulo() != null && !filtro.getTitulo().isEmpty()) {
+        //    jpql.append(" AND LOWER(t.titulo) LIKE LOWER(:titulo)");
+        //    parametros.put("titulo", "%" + filtro.getTitulo() + "%");
+        //}
+        if(filtro.getTitulo() != null && !filtro.getTitulo().trim().isEmpty()) {
+        	jpql.append(" AND LOWER(t.titulo) LIKE LOWER(:titulo)");
+        	parametros.put("titulo","%" + filtro.getTitulo().trim() + "%");
+        }
+        // Filtro por responsável
+        if (filtro.getResponsavel().getNome() != null && !filtro.getResponsavel().getNome().isBlank())  {
+            jpql.append(" AND LOWER(t.responsavel.nome) LIKE LOWER(:responsavel)");
+            parametros.put("responsavel","%" + filtro.getResponsavel().getNome() +"%");
+        }
+
+        // Filtro por situação
+        if (filtro.getSituacao() != null && !filtro.getSituacao().isEmpty()) {
+            jpql.append(" AND t.situacao = :situacao");
+            parametros.put("situacao", filtro.getSituacao());
+        }
+
+        TypedQuery<Tarefa> query = em.createQuery(jpql.toString(), Tarefa.class);
+        parametros.forEach(query::setParameter); // Aplica os parâmetros
+        
+        
+        System.out.println("Filtro - Número: " + filtro.getNumero());
+        System.out.println("Filtro - Título: " + filtro.getTitulo());
+        System.out.println("Filtro - Responsável: " + (filtro.getResponsavel() != null ? filtro.getResponsavel().getNome() : "null"));
+        System.out.println("Filtro - Situação: " + filtro.getSituacao());
+        
+        return query.getResultList();
+    }
+}

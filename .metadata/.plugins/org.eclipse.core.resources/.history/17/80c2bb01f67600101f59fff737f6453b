@@ -1,0 +1,29 @@
+package ptest;
+
+import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+@ManagedBean
+@ViewScoped
+public class PessoaMB {
+    private PessoaBean pessoa = new PessoaBean();
+    private PessoaDAO dao = new PessoaDAO();
+
+    public void salvar() {
+        dao.salvar(pessoa);
+        pessoa = new PessoaBean(); // limpa o formulário
+    }
+
+    public List<PessoaBean> getPessoas() {
+        return dao.listar();
+    }
+
+    public PessoaBean getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(PessoaBean pessoa) {
+        this.pessoa = pessoa;
+    }
+}

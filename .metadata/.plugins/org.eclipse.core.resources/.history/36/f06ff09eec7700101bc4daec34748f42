@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Menu</title>
+	<style>
+	  		body{
+	  			width: 40%;
+           	 	margin: 30px auto;
+            	font-family: Arial, sans-serif;
+	  		
+	  		}
+	  		.container-principal{
+  				width: 100%; 
+  				position:relative;
+	  		}
+	  		
+			.quadro-direito {
+				 position: absolute; /* Posicionamento absoluto em relação ao container-principal */
+			     top: 30%;
+			     right: 0;
+			     width: 35%;
+			     background-color: gray; /* Cor preta */
+			     color: white;
+			     padding: 20px;
+			     box-sizing: border-box;
+			     height: 50%; /* Mesma altura que a .caixa */
+			     border-radius: 5px;
+			     z-index: 1; /* Garante que fique acima da .caixa */
+				}
+	  		.caixa{
+	  			 background: #f5f5f5;
+            	 padding: 15px;
+            	 border-radius: 5px;
+            	 margin-bottom: 20px;
+            	 width:100%;
+            	 box-sizing: border-box;
+	  		}
+	  		.input-t{
+	  		 	margin-left:5px;
+	  		}
+	  		.input-o{
+	  			margin-bottom:6px;
+	  		}
+	  		.input-label{
+	  			display: block;
+            	margin-bottom: 5px;
+           		font-weight: bold;
+	  		}
+	  		.lado-oposto{
+	  			
+	  		}
+	  </style>
+</h:head>
+
+<h:body>
+	<div class="container-principal">
+		<div class="caixa">
+			  <h:form>
+        		<h2 style="text-align:center">Editar Tarefa</h2>
+        	<div class="input-o">
+        		<h:outputText id="responsavel" value="Responsavel" styleClass="input-label"></h:outputText>
+        		<div class="input-t">      		
+        		<h:inputText value="#{tarefaBean.responsavel.nome}"
+        		required="true" requiredMessage="Informe O Responsavel"></h:inputText>
+        		<h:message for="responsavel" style="color:red"/>
+        		</div>
+        	 </div>
+        	 
+        	 
+        	 <div class="input-o">
+        		<h:outputText id="titulo" value="Titulo" styleClass="input-label"></h:outputText>
+        		<div class="input-t">
+        		<h:inputText value="#{tarefaBean.tarefa.titulo}" 
+        		required="true" requiredMessage="Informe O Titulo"/>
+        		<h:message for="titulo" style="color:red"/>
+        		</div>
+        	</div>
+        	
+        	<div class="input-o">
+        		<h:outputText id="numero" value ="numero" styleClass="input-label"></h:outputText>
+        		<div class="input-t">
+	        		<h:inputText value="#{tarefaBean.tarefa.numero}"
+	        		style="width:15px; margin-bottom:10px" required="true" requiredMessage="Idade Requirida"></h:inputText>
+	        		<h:message for="numero" style="color:red"/>
+	        	</div>
+        	</div>
+        	
+        	<div class="input-o">
+        		<h:outputText id="situacao" value ="Situacao" styleClass="input-label"></h:outputText>
+        		<h:selectOneMenu value="#{tarefaBean.tarefa.situacao}" style="margin-bottom:5px">
+                            <f:selectItem itemLabel=" " itemValue=""/>
+                            <f:selectItem itemLabel="Em andamento" itemValue="ANDAMENTO"/>
+                            <f:selectItem itemLabel="Concluído(a)" itemValue="CONCLUIDA"/>
+                </h:selectOneMenu>
+                <h:message for="situacao" style="color:red"/>
+                <br/>
+        	</div>
+        	
+        		<h:commandButton style="margin-bottom:10px" 
+        		value="Registrar" action="#{tarefaBean.salvarTarefa}"></h:commandButton>
+        		<br/>
+        		<h:button value="Voltar" outcome="index"></h:button>
+        		</h:form>
+		</div>
+		<div class="quadro-direito">
+        	<h:form>
+        	<div class="input-o">
+        		<h:outputText value="#{tarefaBean.responsavelTextoEditar}" id="responsavel"
+        		styleClass="input-label"></h:outputText>
+        		<h:outputText value="#{tarefaBean.tituloTextoEditar}" id="titulo"
+        		styleClass="input-label"></h:outputText>
+        		<h:outputText value="#{tarefaBean.numeroTextoEditar}" id="numero"
+        		styleClass="input-label"></h:outputText>
+        		<h:outputText value="#{tarefaBean.responsavelTextoEditar}" id="responsavel"
+        		styleClass="input-label"></h:outputText>
+        	</div>
+        	</h:form>
+        </div>
+    </div>
+</h:body>
+</html>

@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+/home/mogado/Programa/Java/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+557270231.index
+557270231.index
+2607893334.index
+425158398.index
+2018742541.index
+3086974460.index
+2616333450.index
+1204901791.index

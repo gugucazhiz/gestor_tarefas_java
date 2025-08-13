@@ -1,0 +1,82 @@
+package ptest;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
+
+import org.hibernate.hql.internal.ast.tree.TableReferenceNode;
+import org.hibernate.service.spi.InjectService;
+
+
+//meu controlador
+@ManagedBean
+@ViewScoped
+public class TarefaBean{
+	@ManagedProperty("#tarefaService")
+	private TarefaService tarefaservice;
+	@ManagedProperty("#tarefaDAO")
+    private TarefaDAO dao;
+	
+	private Tarefa tarefa =new Tarefa();
+	
+	private List<Responsavel> responsaveis = new ArrayList<>();
+	private List<Tarefa> tarefas= new ArrayList<>();
+	private Responsavel responsavel = new Responsavel();
+
+    public String salvarTarefa() {
+    	dao.salvarResponsavel(responsavel);
+    	tarefa.setResponsavel(responsavel);
+        dao.salvarTarefa(tarefa);
+        tarefa = new Tarefa(); // limpa o formulário
+    	responsavel = new Responsavel();
+    	return "";
+    }
+
+    
+    public String buscarTarefas() {
+        tarefas = tarefaservice.filtrar(tarefa); // Chama o serviço de consulta
+        return "";
+    }
+    public List<Tarefa> getTarefas() {
+		return tarefas;
+	}
+
+	public void setTarefas(List<Tarefa> tarefas) {
+		this.tarefas = tarefas;
+	}
+	public Tarefa getTarefa() {
+		return tarefa;
+	}
+	
+	public List<Responsavel> getResponsaveis() {
+		return responsaveis;
+	}
+
+	public void setResponsaveis(List<Responsavel> responsaveis) {
+		this.responsaveis = responsaveis;
+	}
+
+	public void setTarefa(Tarefa tarefa) {
+		this.tarefa = tarefa;
+	}
+
+	public TarefaDAO getDao() {
+		return dao;
+	}
+
+	public void setDao(TarefaDAO dao) {
+		this.dao = dao;
+	}
+
+	public Responsavel getResponsavel() {
+		return responsavel;
+	}
+
+
+	public void setResponsavel(Responsavel responsavel) {
+		this.responsavel = responsavel;
+	}
+    
+}

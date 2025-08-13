@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+locationorg.eclipse.jst.server.tomcat.runtime.101=/home/mogado/Programa/tomcat/apache-tomcat-10.1.36
+locationorg.eclipse.jst.server.tomcat.runtime.70=/home/mogado/Downloads/apache_7/apache-tomcat-7.0.109
+locationorg.eclipse.jst.server.tomcat.runtime.80=/home/mogado/Downloads/apache_8/apache-tomcat-8.0.53
+locationorg.eclipse.jst.server.tomcat.runtime.85=/home/mogado/Downloads/apache_8_5/apache-tomcat-8.5.99
+locationorg.eclipse.jst.server.tomcat.runtime.90=/home/mogado/Downloads/apache_9/apache-tomcat-9.0.100

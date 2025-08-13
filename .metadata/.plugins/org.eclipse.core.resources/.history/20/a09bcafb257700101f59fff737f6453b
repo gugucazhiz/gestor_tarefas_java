@@ -1,0 +1,66 @@
+package ptest;
+
+import javax.faces.bean.ManagedBean;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import java.io.Serializable;
+import java.util.List;
+
+@Entity
+@ManagedBean
+public class Tarefa implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy =GenerationType.AUTO)
+	private Long id;
+	@NotEmpty(message="Nome deve ser informado")
+	private String nome;
+	@NotEmpty(message="Senha deve ser informada")
+	private String titulo;
+	@NotNull(message="Idade deve ser informada")
+	private Integer numero;
+	
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	public Integer getNumero() {
+		return numero;
+	}
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+	public String getResponsaveis() {
+		return responsaveis;
+	}
+	public void setResponsaveis(String responsaveis) {
+		this.responsaveis = responsaveis;
+	}
+	public String getFiltro() {
+		return filtro;
+	}
+	public void setFiltro(String filtro) {
+		this.filtro = filtro;
+	}	
+	
+}

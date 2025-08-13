@@ -1,0 +1,34 @@
+package ptest;
+
+import javax.persistence.*;
+
+@Entity
+public class Tarefa {
+    @Id @GeneratedValue
+    private Long id;
+    private Integer numero;
+    private String titulo;
+    @ManyToOne
+    private Responsavel responsavel;
+    private String situacao;
+    
+    // Getters e Setters
+}
+
+@Entity
+public class Responsavel {
+    @Id @GeneratedValue
+    private Long id;
+    private String nome;
+    
+    // Getters e Setters
+}
+
+public class FiltroTarefa {
+    private Integer numero;
+    private String titulo;
+    private String responsavel;
+    private String situacao;
+    
+    // Getters e Setters
+}

@@ -1,0 +1,8 @@
+package ptest;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Responsavel {
+	
+}

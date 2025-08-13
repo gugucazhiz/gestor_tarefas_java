@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="installedFeatures">
+		<item value="org.eclipse.datatools.connectivity.feature:1.16.1.202412071309"/>
+		<item value="org.eclipse.datatools.doc.user:1.16.1.202412071309"/>
+		<item value="org.eclipse.datatools.enablement.feature:1.15.1.202412071309"/>
+		<item value="org.eclipse.datatools.modelbase.feature:1.15.1.202412071309"/>
+		<item value="org.eclipse.datatools.sqldevtools.ddlgen.feature:1.16.1.202412071309"/>
+		<item value="org.eclipse.datatools.sqldevtools.feature:1.16.1.202412071309"/>
+		<item value="org.eclipse.draw2d:3.24.0.202505280821"/>
+		<item value="org.eclipse.egit:7.2.0.202502261823-rc1"/>
+		<item value="org.eclipse.emf.codegen.ecore.ui:2.42.0.v20250329-0911"/>
+		<item value="org.eclipse.emf.codegen.ecore:2.42.0.v20250415-0852"/>
+		<item value="org.eclipse.emf.codegen.ui:2.27.0.v20240911-1027"/>
+		<item value="org.eclipse.emf.codegen:2.27.0.v20250329-0911"/>
+		<item value="org.eclipse.emf.common.ui:2.24.0.v20250329-0911"/>
+		<item value="org.eclipse.emf.common:2.35.0.v20250401-0947"/>
+		<item value="org.eclipse.emf.converter:2.22.0.v20240911-1442"/>
+		<item value="org.eclipse.emf.databinding.edit:1.12.0.v20240604-0832"/>
+		<item value="org.eclipse.emf.databinding:1.12.0.v20240604-0832"/>
+		<item value="org.eclipse.emf.ecore.edit:2.17.0.v20240604-0832"/>
+		<item value="org.eclipse.emf.ecore.editor:2.20.0.v20240604-0832"/>
+		<item value="org.eclipse.emf.ecore:2.40.0.v20250414-1351"/>
+		<item value="org.eclipse.emf.edit.ui:2.28.0.v20250405-0811"/>
+		<item value="org.eclipse.emf.edit:2.24.0.v20250330-0741"/>
+		<item value="org.eclipse.emf.mapping.ecore.editor:2.17.0.v20240604-0832"/>
+		<item value="org.eclipse.emf.mapping.ecore:2.15.0.v20240604-0832"/>
+		<item value="org.eclipse.emf.mapping.ui:2.17.0.v20240911-1027"/>
+		<item value="org.eclipse.emf.mapping:2.16.0.v20240604-0832"/>
+		<item value="org.eclipse.emf:2.42.0.v20250415-0852"/>
+		<item value="org.eclipse.epp.mpc:1.12.0.v20250130-1529"/>
+		<item value="org.eclipse.gef:3.24.0.202505280821"/>
+		<item value="org.eclipse.graphiti.feature:0.19.3.202502181516"/>
+		<item value="org.eclipse.help:2.3.2100.v20250220-0450"/>
+		<item value="org.eclipse.jdt:3.20.100.v20250220-0450"/>
+		<item value="org.eclipse.jgit.gpg.bc:7.2.0.202502261823-rc1"/>
+		<item value="org.eclipse.jgit.http.apache:7.2.0.202502261823-rc1"/>
+		<item value="org.eclipse.jgit.ssh.apache:7.2.0.202502261823-rc1"/>
+		<item value="org.eclipse.jgit:7.2.0.202502261823-rc1"/>
+		<item value="org.eclipse.jst.common.fproj.enablement.jdt:3.37.0.v202501090237"/>
+		<item value="org.eclipse.jst.enterprise_ui.feature:3.37.0.v202501052159"/>
+		<item value="org.eclipse.jst.ws.axis2tools.feature:1.2.0.v202405180419"/>
+		<item value="org.eclipse.jst.ws.cxf.feature:1.1.1300.v202409291603"/>
+		<item value="org.eclipse.jst.ws.jaxws.feature:1.2.1100.v202409291604"/>
+		<item value="org.eclipse.m2e.feature:2.8.0.20250224-0720"/>
+		<item value="org.eclipse.m2e.logback.feature:2.7.0.20241001-1350"/>
+		<item value="org.eclipse.m2e.wtp.feature:1.6.1.20231024-1618"/>
+		<item value="org.eclipse.m2e.wtp.jaxrs.feature:1.6.1.20231024-1618"/>
+		<item value="org.eclipse.m2e.wtp.jpa.feature:1.6.1.20231024-1618"/>
+		<item value="org.eclipse.m2e.wtp.jsf.feature:1.6.1.20231024-1618"/>
+		<item value="org.eclipse.mylyn.builds.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.commons.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.commons.identity.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.commons.notifications.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.commons.repositories.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.context.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.egit.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.git.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.github.feature:6.7.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.ide.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.jdt.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.jenkins.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.monitor.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.reviews.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.tasks.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.team.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.versions.feature:4.6.0.v20241229-1209"/>
+		<item value="org.eclipse.mylyn.wikitext.feature:4.6.0.v20250108-1719"/>
+		<item value="org.eclipse.oomph.p2:1.33.0.v20250226-1734"/>
+		<item value="org.eclipse.oomph.setup.core:1.33.0.v20250226-1734"/>
+		<item value="org.eclipse.oomph.setup:1.35.0.v20250226-1734"/>
+		<item value="org.eclipse.php:8.2.0.202311292129"/>
+		<item value="org.eclipse.rcp:4.35.0.v20250220-0450"/>
+		<item value="org.eclipse.tm.terminal.connector.ssh.feature:12.0.0.202501171425"/>
+		<item value="org.eclipse.tm.terminal.control.feature:12.1.0.202505141520"/>
+		<item value="org.eclipse.tm.terminal.feature:12.0.0.202410081652"/>
+		<item value="org.eclipse.tm.terminal.view.feature:12.0.0.202501171425"/>
+		<item value="org.eclipse.wst.common.fproj:3.7.4.v202501090237"/>
+		<item value="org.eclipse.wst.jsdt.feature:2.4.500.v202307190318"/>
+		<item value="org.eclipse.wst.json_ui.feature:1.1.11.v202308160419"/>
+		<item value="org.eclipse.wst.web_ui.feature:3.36.0.v202503020853"/>
+		<item value="org.eclipse.wst.xml_ui.feature:3.37.0.v202503020853"/>
+	</list>
+	<section name="CleanDialogSettings">
+		<item key="TOGGLE_SELECTED" value="false"/>
+		<item key="DIALOG_WIDTH" value="569"/>
+		<item key="DIALOG_HEIGHT" value="393"/>
+		<item key="DIALOG_FONT_NAME" value="1|Sans|10.0|0|GTK|1|"/>
+	</section>
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<section name="SmartImportWizard.dialogBounds">
+			<item key="DIALOG_X_ORIGIN" value="236"/>
+			<item key="DIALOG_Y_ORIGIN" value="0"/>
+			<item key="DIALOG_WIDTH" value="900"/>
+			<item key="DIALOG_HEIGHT" value="678"/>
+			<item key="DIALOG_FONT_NAME" value="1|Sans|10.0|0|GTK|1|"/>
+		</section>
+	</section>
+</section>

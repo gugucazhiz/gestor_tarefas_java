@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Listagem de Tarefas</title>
+    <style>
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+        .filter-panel {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .filter-row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .filter-item {
+            margin-right: 20px;
+        }
+        .filter-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .action-button {
+            margin-right: 5px;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table th {
+            background: #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="container">
+        <h1 >Listagem de Tarefas</h1>
+        
+        <h:form id="filterForm">
+            <div class="filter-panel">
+                <div class="filter-row">
+                    <div class="filter-item">
+                        <h:outputLabel value="Número:" styleClass="filter-label"/>
+                        <h:inputText value="#{tarefaBean.tarefa.numero}" style="width: 100px;"/>
+                        
+                    </div>
+                    
+                    <div class="filter-item">
+                        <h:outputLabel value="Título/Descrição:" styleClass="filter-label"/>
+                        <h:inputText value="#{tarefaBean.tarefa.titulo}" style="width: 250px;"/>
+                    </div>
+                </div>
+                
+                <div class="filter-row">
+                    <div class="filter-item">
+                        <h:outputLabel value="Responsável:" styleClass="filter-label"/>
+                        <h:inputText value="#{tarefaBean.tarefa.responsavel.nome}" style="width:100px;"/>
+                    </div>
+                    
+                    <div class="filter-item">
+                        <h:outputLabel value="Situação:" styleClass="filter-label"/>
+                        <h:selectOneMenu value="#{tarefaBean.tarefa.situacao}">
+                            <f:selectItem itemLabel="Todos" itemValue=""/>
+                            <f:selectItem itemLabel="Em andamento" itemValue="ANDAMENTO"/>
+                            <f:selectItem itemLabel="Concluída" itemValue="CONCLUIDA"/>
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+                
+                <h:commandButton value="Buscar Tarefas" action="#{tarefaBean.buscarTarefas}"
+                    styleClass="action-button"/>
+                <h:button value="Registrar" outcome="registrar"></h:button>
+            </div>
+        </h:form>
+        
+        <h:dataTable value="#{tarefaBean.tarefas}" var="tarefa" styleClass="data-table">
+            <h:column>
+                <f:facet name="header">Número</f:facet>
+                #{tarefa.numero}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Título</f:facet>
+                #{tarefa.titulo}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Responsável</f:facet>
+                #{tarefa.responsavel.nome}
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header">Ações</f:facet>
+                <h:commandLink value="Editar" 
+                    styleClass="action-button"/>
+                <h:commandLink value="Excluir" action="#{tarefaBean.excluirTarefa(tarefa)}"
+                    styleClass="action-button"
+                    onclick="return confirm('Tem certeza que deseja excluir esta tarefa?');"/>
+                <h:commandLink value="Concluir" action="#{tarefaBean.concluirTarefa(tarefa)}"
+                    styleClass="action-button"
+                    rendered="#{tarefa.situacao != 'CONCLUIDA'}"/>
+            </h:column>
+        </h:dataTable>
+    </div>
+</h:body>
+</html>

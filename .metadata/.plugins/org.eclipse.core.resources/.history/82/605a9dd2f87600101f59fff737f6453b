@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/apache-tomcat-7.0.109 at localhost-config" deployDir="wtpwebapps" hostname="localhost" id="apache-tomcat-7.0.109 at localhost" name="apache-tomcat-7.0.109 at localhost" runtime-id="apache-tomcat-7.0.109" server-type="org.eclipse.jst.server.tomcat.70" server-type-id="org.eclipse.jst.server.tomcat.70" start-timeout="45" stop-timeout="15" testEnvironment="false" timestamp="2"/>
