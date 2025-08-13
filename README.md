@@ -1,7 +1,7 @@
 # Projeto JSF com PostgreSQL
 
 Este projeto é uma aplicação web JSF que utiliza **JPA/Hibernate** para persistência de dados em **PostgreSQL**.
-
+itens presentes no projeto: (a;b;c
 ---
 
 ## Pré-requisitos
@@ -66,6 +66,7 @@ http://localhost:8080/ptest
 
 
 
-
-
+## Diagrama De Classes:
+Mais detalhes estão presentes no Pdf diagrama_classes.pdf
+<img width="2552" height="5250" alt="deepseek_mermaid_20250813_5ece3b" src="https://github.com/user-attachments/assets/d0dcb03f-6901-417e-9157-40665e2ccd3e" />
 
