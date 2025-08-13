@@ -1,0 +1,201 @@
+package ptest;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
+
+
+
+//meu controlador
+@ManagedBean
+@SessionScoped
+public class TarefaBean{
+	@ManagedProperty("#{tarefaService}")
+	private TarefaService tarefaservice;
+	@ManagedProperty("#{tarefaDAO}")
+    private TarefaDAO dao;
+	
+	private Tarefa tarefa =new Tarefa();
+	
+	private List<Responsavel> responsaveis = new ArrayList<>();
+	private List<Tarefa> tarefas= new ArrayList<>();
+	private Responsavel responsavel = new Responsavel();
+	private String responsavelTextoEditar;
+	private String tituloTextoEditar;
+	private String protocoloTextoEditar;
+	private String situacaoTextoEditar;
+	private String detalhesTextoEditar;
+	private String deadlineTextoEditar;
+	private String PrioridadeTextoEditar;
+	
+	@PostConstruct
+	public void exportSchema() {
+	    try {
+	        // O "test" precisa ser o mesmo nome que você usou no persistence.xml
+	        Connection conn = DriverManager.getConnection("jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1", "sa", "");
+	        Statement stmt = conn.createStatement();
+	        stmt.execute("SCRIPT NODATA TO '/home/mogado/schema.sql'");
+	        conn.close();
+	        System.out.println("Schema exportado!");
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
+
+	
+	
+    public String salvarTarefa() {
+    	dao.salvarResponsavel(responsavel);
+    	tarefa.setResponsavel(responsavel);
+        dao.salvarTarefa(tarefa);
+        tarefa = new Tarefa(); // limpa o formulário
+    	responsavel = new Responsavel();
+    	return "";
+    }
+    public String editarTarefa(Tarefa editar){
+    	System.out.println("Tarefa recebida: " + editar.getTitulo());
+    	this.tarefa = editar;
+    	this.responsavel = editar.getResponsavel();
+    	this.responsavelTextoEditar = editar.getResponsavel().getNome();
+    	this.protocoloTextoEditar =  editar.getNumero();
+    	this.tituloTextoEditar  = editar.getTitulo();
+    	this.situacaoTextoEditar = editar.getSituacao();
+    	this.deadlineTextoEditar = editar.getDeadline();
+    	this.detalhesTextoEditar = editar.getDetalhes();
+		return "editar";
+    }
+    public String detalhesTarefa(Tarefa detalhes) {
+    	System.out.println("Tarefa recebida: " + detalhes.getTitulo());
+    	this.tarefa = detalhes;
+    	this.responsavel = detalhes.getResponsavel();
+    	this.responsavelTextoEditar = detalhes.getResponsavel().getNome();
+    	this.tituloTextoEditar  = detalhes.getTitulo();
+    	this.deadlineTextoEditar = detalhes.getDeadline();
+    	this.detalhesTextoEditar = detalhes.getDetalhes();
+		return "detalhes";
+    }
+    public String salvarTarefaAtualizada() {
+    	dao.editarAtualizarTarefa(tarefa);
+    	System.out.print("Situacao atual: "+tarefa.getSituacao());
+    	tarefa = new Tarefa();
+    	return "index";
+    }
+    
+    public String excluirTarefa(Tarefa excluir){
+    	dao.excluirTarefa(excluir);
+    	buscarTarefas();
+		return "";
+    }
+    
+    public String concluirTarefa(Tarefa concluir){
+    	concluir.setSituacao("CONCLUIDA");
+    	dao.editarAtualizarTarefa(concluir);
+		return "index";
+    }
+    
+    
+    
+    public String buscarTarefas() {
+        tarefas = tarefaservice.filtrar(tarefa); // Chama o serviço de consulta
+        return "";
+    }
+    public List<Tarefa> getTarefas() {
+		return tarefas;
+	}
+
+	public void setTarefas(List<Tarefa> tarefas) {
+		this.tarefas = tarefas;
+	}
+	public Tarefa getTarefa() {
+		return tarefa;
+	}
+	
+	public List<Responsavel> getResponsaveis() {
+		return responsaveis;
+	}
+
+	public void setResponsaveis(List<Responsavel> responsaveis) {
+		this.responsaveis = responsaveis;
+	}
+
+	public void setTarefa(Tarefa tarefa) {
+		this.tarefa = tarefa;
+	}
+
+	public TarefaDAO getDao() {
+		return dao;
+	}
+
+	public void setDao(TarefaDAO dao) {
+		this.dao = dao;
+	}
+
+	public Responsavel getResponsavel() {
+		return responsavel;
+	}
+
+
+	public TarefaService getTarefaservice() {
+		return tarefaservice;
+	}
+
+
+	public void setTarefaservice(TarefaService tarefaservice) {
+		this.tarefaservice = tarefaservice;
+	}
+
+	public String getDetalhesTextoEditar() {
+		return detalhesTextoEditar;
+	}
+	public void setDetalhesTextoEditar(String detalhesTextoEditar) {
+		this.detalhesTextoEditar = detalhesTextoEditar;
+	}
+	public String getDeadlineTextoEditar() {
+		return deadlineTextoEditar;
+	}
+	public void setDeadlineTextoEditar(String deadlineTextoEditar) {
+		this.deadlineTextoEditar = deadlineTextoEditar;
+	}
+	public void setResponsavel(Responsavel responsavel) {
+		this.responsavel = responsavel;
+	}
+	public String getResponsavelTextoEditar() {
+		return responsavelTextoEditar;
+	}
+	public void setResponsavelTextoEditar(String responsavelTextoEditar) {
+		this.responsavelTextoEditar = responsavelTextoEditar;
+	}
+	public String getTituloTextoEditar() {
+		return tituloTextoEditar;
+	}
+	public void setTituloTextoEditar(String tituloTextoEditar) {
+		this.tituloTextoEditar = tituloTextoEditar;
+	}
+	public String getNumeroTextoEditar() {
+		return protocoloTextoEditar;
+	}
+	public void setNumeroTextoEditar(String numeroTextoEditar) {
+		this.protocoloTextoEditar = numeroTextoEditar;
+	}
+	public String getSituacaoTextoEditar() {
+		return situacaoTextoEditar;
+	}
+	public void setSituacaoTextoEditar(String situacaoTextoEditar) {
+		this.situacaoTextoEditar = situacaoTextoEditar;
+	}
+	public String getPrioridadeTextoEditar() {
+		return PrioridadeTextoEditar;
+	}
+	public void setPrioridadeTextoEditar(String prioridadeTextoEditar) {
+		PrioridadeTextoEditar = prioridadeTextoEditar;
+	}
+	
+    
+}

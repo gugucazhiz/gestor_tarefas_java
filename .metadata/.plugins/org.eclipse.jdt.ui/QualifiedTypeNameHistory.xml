@@ -16,4 +16,7 @@
     <fullyQualifiedTypeName name="ptest.Responsavel"/>
     <fullyQualifiedTypeName name="javax.faces.component.html.HtmlInputTextarea"/>
     <fullyQualifiedTypeName name="javax.faces.bean.SessionScoped"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="javax.persistence.PostLoad"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
 </qualifiedTypeNameHistroy>
